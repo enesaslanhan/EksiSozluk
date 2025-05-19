@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorSozluk.Api.Application.Features.Commands.Queries.User
+namespace BlazorSozluk.Api.Application.Features.Commands.Queries.User.Login
 {
-    public class LoginUserCommandValidator:AbstractValidator<LoginUserCommand>
+    public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
     {
-        public LoginUserCommandValidator() {
+        public LoginUserCommandValidator()
+        {
             RuleFor(i => i.EmailAdress)
                 .NotNull()
                 .EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)

@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorSozluk.Api.Application.Features.Commands.Queries.User
+namespace BlazorSozluk.Api.Application.Features.Commands.Queries.User.Login
 {
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
     {
@@ -36,13 +36,13 @@ namespace BlazorSozluk.Api.Application.Features.Commands.Queries.User
 
             if (dbUser == null)
                 throw new DatabaseValidateException("User not found!");
-            var pass=PasswordEncryptor.Encrpt(request.Password);
+            var pass = PasswordEncryptor.Encrpt(request.Password);
             if (dbUser.Password != pass)
                 throw new DatabaseValidateException("Password is wrong!");
             if (!dbUser.EmailConfirmed)
                 throw new DatabaseValidateException("Email adress is not confirmed yet!");
 
-            var result=mapper.Map<LoginUserViewModel>(dbUser);
+            var result = mapper.Map<LoginUserViewModel>(dbUser);
 
             var claims = new Claim[]
             {
@@ -71,5 +71,5 @@ namespace BlazorSozluk.Api.Application.Features.Commands.Queries.User
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
-    
+
 }
