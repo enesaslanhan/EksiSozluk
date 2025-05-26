@@ -1,5 +1,6 @@
 ﻿using BlazorSozluk.Common;
 using BlazorSozluk.Common.Events.Entry;
+using BlazorSozluk.Common.Events.EntryComment;
 using BlazorSozluk.Common.Infrastructure;
 using BlazorSozluk.Common.Models.RequestModels;
 using MediatR;
