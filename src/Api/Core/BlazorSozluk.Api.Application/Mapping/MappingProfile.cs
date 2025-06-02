@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BlazorSozluk.Api.Application.Features.Queries.GetEntries;
 using BlazorSozluk.Api.Domain.Models;
 using BlazorSozluk.Common.Models.Queries;
 using BlazorSozluk.Common.Models.RequestModels;
@@ -24,7 +25,7 @@ namespace BlazorSozluk.Api.Application.Mapping
             #endregion
             #region EntryComment
             CreateMap<CreateEntryCommentCommand, EntryComment>().ReverseMap();
-
+            CreateMap<Entry,GetEntiresViewModel>().ForMember(x=>x.CommentCount,y=>y.MapFrom(z=>z.EntryComments.Count));
             #endregion
 
         }
