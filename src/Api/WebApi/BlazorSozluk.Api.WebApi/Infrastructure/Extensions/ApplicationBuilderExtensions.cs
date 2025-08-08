@@ -41,6 +41,7 @@ namespace BlazorSozluk.Api.WebApi.Infrastructure.Extensions
                 statusCode = HttpStatusCode.Unauthorized;
             if (exception is DatabaseValidateException)
             {
+                statusCode = HttpStatusCode.BadRequest;
                 var validationResponse = new ValidationResponseModel(exception.Message);
                 await WriteResponse(context, statusCode, validationResponse);
                 return;
